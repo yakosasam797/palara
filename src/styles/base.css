@@ -1,0 +1,789 @@
+/* ============================================================
+   PALARA — BOLD ABSTRACT BASE STYLES
+   Brand Green + Flame Orange
+   ============================================================ */
+@import './variables.css';
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-relaxed);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* ---- BOLD Typography — Brand Green headings ---- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-tight);
+    color: var(--color-brand);
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: var(--fs-7xl);
+    line-height: var(--lh-tight);
+}
+
+h2 {
+    font-size: var(--fs-6xl);
+    line-height: var(--lh-tight);
+}
+
+h3 {
+    font-size: var(--fs-4xl);
+}
+
+h4 {
+    font-size: var(--fs-2xl);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: var(--fs-5xl);
+    }
+
+    h2 {
+        font-size: var(--fs-4xl);
+    }
+
+    h3 {
+        font-size: var(--fs-3xl);
+    }
+}
+
+p {
+    margin-bottom: var(--space-4);
+    color: var(--color-text-secondary);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+}
+
+a {
+    color: var(--color-cta);
+    text-decoration: none;
+    transition: color var(--duration-fast) ease;
+}
+
+a:hover {
+    color: var(--color-cta-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: inherit;
+}
+
+input,
+textarea,
+select {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* ---- Layout ---- */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+.section {
+    padding: var(--space-24) 0;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-16) 0;
+    }
+}
+
+/* ---- Section Headers ---- */
+.section-header {
+    margin-bottom: var(--space-16);
+}
+
+.section-header.centered {
+    text-align: center;
+}
+
+.section-eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    color: var(--color-cta);
+    border: 2px solid var(--color-cta);
+    border-radius: var(--radius-full);
+    padding: var(--space-2) var(--space-5);
+    margin-bottom: var(--space-6);
+    transform: rotate(-2deg);
+}
+
+.section-title {
+    margin-bottom: var(--space-4);
+    max-width: 900px;
+}
+
+.section-header.centered .section-title {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-subtitle {
+    font-size: var(--fs-xl);
+    color: var(--color-text-muted);
+    max-width: 600px;
+    line-height: var(--lh-relaxed);
+}
+
+.section-header.centered .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---- Buttons — CTA uses Flame, Brand uses Green ---- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    border-radius: var(--radius-full);
+    transition: all var(--duration-normal) var(--ease-out);
+    min-height: 52px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--color-cta);
+    outline-offset: 3px;
+}
+
+.btn-primary {
+    background: var(--color-cta);
+    color: var(--color-cream);
+}
+
+.btn-primary:hover {
+    background: var(--color-cta-dark);
+    transform: scale(1.03);
+    box-shadow: 0 8px 32px rgba(var(--color-cta-rgb), 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-brand {
+    background: var(--color-brand);
+    color: var(--color-cream);
+}
+
+.btn-brand:hover {
+    background: var(--color-brand-dark);
+    transform: scale(1.03);
+    box-shadow: 0 8px 32px rgba(var(--color-brand-rgb), 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-brand);
+    border: 2px solid var(--color-brand);
+}
+
+.btn-secondary:hover {
+    background: var(--color-brand);
+    color: var(--color-cream);
+    transform: scale(1.03);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--color-text);
+}
+
+.btn-ghost:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.btn-sm {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--fs-sm);
+    min-height: 44px;
+}
+
+.btn-lg {
+    padding: var(--space-5) var(--space-10);
+    font-size: var(--fs-lg);
+    min-height: 60px;
+}
+
+.btn-icon {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border-radius: var(--radius-full);
+}
+
+.btn-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ---- Cards ---- */
+.card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-2xl);
+    border: 1.5px solid var(--color-border);
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+}
+
+.card-body {
+    padding: var(--space-8);
+}
+
+/* ---- Badges ---- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    border-radius: var(--radius-full);
+    border: 1.5px solid currentColor;
+    transform: rotate(-3deg);
+}
+
+.badge-veg {
+    color: var(--color-brand);
+}
+
+.badge-popular {
+    color: var(--color-cta);
+    background: rgba(var(--color-cta-rgb), 0.08);
+}
+
+.badge-spicy {
+    color: #CC2D1A;
+}
+
+/* ---- Veg Indicator ---- */
+.veg-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-brand);
+    border-radius: 4px;
+}
+
+.veg-indicator::after {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: var(--radius-full);
+    background: var(--color-brand);
+}
+
+/* ---- Toast ---- */
+.toast-container {
+    position: fixed;
+    top: var(--space-6);
+    right: var(--space-6);
+    z-index: var(--z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    pointer-events: none;
+}
+
+.toast {
+    background: var(--color-brand);
+    color: var(--color-cream);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-float);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    pointer-events: auto;
+    animation: toastIn 0.5s var(--ease-spring) forwards;
+}
+
+.toast.toast-out {
+    animation: toastOut 0.3s ease forwards;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(60px) scale(0.8)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1)
+    }
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(60px)
+    }
+}
+
+/* ---- Overlay ---- */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--color-overlay);
+    z-index: var(--z-overlay);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--duration-slow) ease;
+    backdrop-filter: blur(4px);
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-text-muted);
+    border-radius: var(--radius-full);
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-cta);
+    outline-offset: 3px;
+}
+
+::selection {
+    background: rgba(var(--color-brand-rgb), 0.15);
+    color: var(--color-text);
+}
+
+/* ---- Form Elements ---- */
+.form-group {
+    margin-bottom: var(--space-6);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wide);
+    color: var(--color-text);
+    margin-bottom: var(--space-3);
+}
+
+.form-input {
+    width: 100%;
+    padding: var(--space-4) var(--space-6);
+    background: var(--color-bg);
+    border: 2px solid var(--color-border-strong);
+    border-radius: var(--radius-xl);
+    font-size: var(--fs-base);
+    color: var(--color-text);
+    transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+    min-height: 52px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 4px rgba(var(--color-brand-rgb), 0.12);
+}
+
+.form-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+textarea.form-input {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* ============================================================
+   INTRO LOADER — Brand Green Reveal
+   (Like Joyeux Repas opening animation)
+   ============================================================ */
+.intro-loader {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-loader);
+    background: var(--color-brand);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.intro-loader.hide {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.intro-logo {
+    font-family: var(--font-display);
+    font-size: var(--fs-8xl);
+    color: var(--color-cream);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-tighter);
+    line-height: 1;
+    opacity: 0;
+    transform: scale(0.85);
+    animation: introReveal 1s var(--ease-spring) 0.3s forwards;
+}
+
+.intro-flame {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+    opacity: 0;
+    animation: introFlame 0.8s var(--ease-spring) 0.1s forwards;
+}
+
+.intro-tagline {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--ls-wider);
+    opacity: 0;
+    animation: introReveal 0.6s var(--ease-out) 0.8s forwards;
+}
+
+/* Color dots like Joyeux Repas */
+.intro-dots {
+    position: absolute;
+    bottom: var(--space-10);
+    left: var(--space-10);
+    display: flex;
+    gap: var(--space-3);
+}
+
+.intro-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-full);
+    opacity: 0;
+    animation: introDot 0.4s var(--ease-spring) forwards;
+}
+
+.intro-dot:nth-child(1) {
+    background: var(--color-cta);
+    animation-delay: 0.2s;
+}
+
+.intro-dot:nth-child(2) {
+    background: var(--color-flame-tip);
+    animation-delay: 0.35s;
+}
+
+.intro-dot:nth-child(3) {
+    background: var(--color-brand-light);
+    animation-delay: 0.5s;
+}
+
+.intro-dot:nth-child(4) {
+    background: var(--color-brand-dark);
+    animation-delay: 0.65s;
+}
+
+@keyframes introReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0)
+    }
+}
+
+@keyframes introFlame {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.5)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+    }
+}
+
+@keyframes introDot {
+    from {
+        opacity: 0;
+        transform: scale(0)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS — Parallax + Reveal
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger children */
+.stagger-children .reveal:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.stagger-children .reveal:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+.stagger-children .reveal:nth-child(3) {
+    transition-delay: 0.19s;
+}
+
+.stagger-children .reveal:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.stagger-children .reveal:nth-child(5) {
+    transition-delay: 0.33s;
+}
+
+.stagger-children .reveal:nth-child(6) {
+    transition-delay: 0.40s;
+}
+
+/* Parallax image container */
+.parallax-img-wrapper {
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+}
+
+.parallax-img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    transition: transform 0.05s linear;
+    will-change: transform;
+}
+
+/* ---- Base Animations ---- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0.5
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-10px)
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0)
+    }
+
+    to {
+        transform: translateX(-50%)
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%)
+    }
+
+    to {
+        transform: translateX(0)
+    }
+}
+
+.animate-fade-up {
+    animation: fadeUp 0.8s var(--ease-out) both;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease both;
+}
