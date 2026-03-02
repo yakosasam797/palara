@@ -8,7 +8,7 @@ import { createMenu } from './sections/menu.js';
 import { createCheckout } from './sections/checkout.js';
 import { createTracking } from './sections/tracking.js';
 import { createFavorites } from './sections/favorites.js';
-import { createLoyalty } from './sections/loyalty.js';
+import { createHeritage } from './sections/heritage.js';
 import { createCatering } from './sections/catering.js';
 import { createInstagram } from './sections/instagram.js';
 import { createDeliveryZone } from './sections/delivery-zone.js';
@@ -18,15 +18,17 @@ import { icons } from './components/icons.js';
 const app = document.getElementById('app');
 
 /* ============================================================
-   INTRO LOADER — Brand Green Reveal (like Joyeux Repas)
+   INTRO LOADER — Brand Logo Reveal
    ============================================================ */
 function createIntroLoader() {
     const loader = document.createElement('div');
     loader.className = 'intro-loader';
     loader.id = 'intro-loader';
     loader.innerHTML = `
-    <div class="intro-flame">🔥</div>
-    <div class="intro-logo">PALARA</div>
+    <div class="intro-logo-glow"></div>
+    <div class="intro-logo-img">
+      <img src="/From me/logo-Photoroom.png" alt="Palara Logo" />
+    </div>
     <div class="intro-tagline">Pure Vegetarian · Since 2019</div>
     <div class="intro-dots">
       <span class="intro-dot"></span>
@@ -45,7 +47,7 @@ function dismissIntroLoader() {
             loader.classList.add('hide');
             document.body.classList.remove('no-scroll');
             setTimeout(() => loader.remove(), 900);
-        }, 2200); // Show loader for 2.2s, then slide up
+        }, 2600);
     }
 }
 
@@ -57,7 +59,6 @@ function initScrollReveal() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Optionally unobserve after revealing
                 if (!entry.target.dataset.keepObserving) {
                     observer.unobserve(entry.target);
                 }
@@ -68,14 +69,127 @@ function initScrollReveal() {
         rootMargin: '0px 0px -60px 0px'
     });
 
-    // Observe all elements with reveal classes
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate, .reveal-blur').forEach(el => {
         observer.observe(el);
+    });
+
+    // Stagger children in sections
+    document.querySelectorAll('.stagger').forEach(container => {
+        const children = container.children;
+        Array.from(children).forEach((child, i) => {
+            child.style.transitionDelay = `${i * 0.07}s`;
+        });
     });
 }
 
 /* ============================================================
-   PARALLAX — Subtle image depth effect on scroll
+   COUNTER ANIMATION — Animate numbers from 0 to target
+   ============================================================ */
+function initCounterAnimation() {
+    const counters = document.querySelectorAll('.counter-animate');
+    if (!counters.length) return;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                if (isNaN(target)) return;
+
+                let current = 0;
+                const duration = 1800;
+                const stepTime = 30;
+                const steps = duration / stepTime;
+                const increment = target / steps;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.floor(current);
+                }, stepTime);
+
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(c => counterObserver.observe(c));
+}
+
+/* ============================================================
+   TEXT REVEAL — Word-by-word fade-in for section titles
+   ============================================================ */
+function initTextReveal() {
+    document.querySelectorAll('.text-reveal').forEach(el => {
+        const words = el.textContent.trim().split(/\s+/);
+        el.innerHTML = words.map((word, i) =>
+            `<span class="word-reveal" style="transition-delay:${i * 0.06}s">${word}</span>`
+        ).join(' ');
+    });
+
+    const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('text-revealed');
+                textObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.text-reveal').forEach(el => textObserver.observe(el));
+}
+
+/* ============================================================
+   SMOOTH SECTIONS — Scale + opacity on enter for premium feel
+   ============================================================ */
+function initSmoothSections() {
+    const sections = document.querySelectorAll('.section');
+    if (!sections.length) return;
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-visible');
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    sections.forEach(s => {
+        s.classList.add('section-animate');
+        sectionObserver.observe(s);
+    });
+}
+
+/* ============================================================
+   TEMPLE DIVIDER — Decorative section separator
+   ============================================================ */
+function createTempleDivider() {
+    const div = document.createElement('div');
+    div.className = 'temple-divider';
+    div.innerHTML = '<div class="temple-divider-line"></div>';
+    return div;
+}
+
+/* ============================================================
+   BUTTON GLOW — Mouse-tracking radial highlight on CTAs
+   ============================================================ */
+function initButtonGlow() {
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            btn.style.setProperty('--mouse-x', `${x}%`);
+            btn.style.setProperty('--mouse-y', `${y}%`);
+        });
+    });
+}
+
+/* ============================================================
+   PARALLAX — Multi-layer depth effect on scroll
    ============================================================ */
 function initParallax() {
     const parallaxElements = document.querySelectorAll('[data-parallax]');
@@ -137,6 +251,23 @@ function initSmoothNavbar() {
 }
 
 /* ============================================================
+   SCROLL PROGRESS INDICATOR
+   ============================================================ */
+function initScrollProgress() {
+    const bar = document.createElement('div');
+    bar.className = 'scroll-progress-bar';
+    bar.id = 'scroll-progress';
+    document.body.appendChild(bar);
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = `${progress}%`;
+    }, { passive: true });
+}
+
+/* ============================================================
    RENDER APP
    ============================================================ */
 function renderApp() {
@@ -167,10 +298,13 @@ function renderApp() {
     if (currentView === 'home') {
         main.appendChild(createHero());
         main.appendChild(createMenu());
+        main.appendChild(createTempleDivider());
         main.appendChild(createFavorites());
-        main.appendChild(createLoyalty());
-        main.appendChild(createCatering());
+        main.appendChild(createTempleDivider());
         main.appendChild(createInstagram());
+        main.appendChild(createTempleDivider());
+        main.appendChild(createHeritage());
+        main.appendChild(createCatering());
         main.appendChild(createDeliveryZone());
     } else if (currentView === 'checkout') {
         main.appendChild(createCheckout());
@@ -195,6 +329,11 @@ function renderApp() {
         initSmoothNavbar();
         initScrollReveal();
         initParallax();
+        initScrollProgress();
+        initCounterAnimation();
+        initTextReveal();
+        initSmoothSections();
+        initButtonGlow();
     });
 }
 

@@ -2,18 +2,14 @@ import { icons } from '../components/icons.js';
 import { outlets } from '../data/menu-data.js';
 
 export function createFooter() {
-    const footer = document.createElement('footer');
-    footer.className = 'footer';
-    footer.innerHTML = `
+  const footer = document.createElement('footer');
+  footer.className = 'footer';
+  footer.innerHTML = `
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <span class="logo-icon" style="font-size:1.5rem">🍃</span>
-            <div>
-              <span class="logo-brand" style="color:var(--color-text-on-dark)">Padival's</span>
-              <span class="logo-name" style="color:var(--color-primary-light)">PALARA</span>
-            </div>
+            <img src="/From me/logo-Photoroom.png" alt="Palara" class="footer-logo-img" />
           </div>
           <p class="footer-tagline">Pure Vegetarian. Pure Delicious.<br/>Serving happiness since 2020.</p>
           <div class="footer-social">
@@ -38,7 +34,7 @@ export function createFooter() {
           <ul class="footer-links">
             <li><a href="#menu">Menu</a></li>
             <li><a href="#favorites">Favorites</a></li>
-            <li><a href="#loyalty">Rewards</a></li>
+            <li><a href="#instagram">Instagram</a></li>
             <li><a href="#catering">Catering</a></li>
             <li><a href="#locations">Delivery Zones</a></li>
           </ul>
@@ -51,5 +47,5 @@ export function createFooter() {
       </div>
     </div>
   `;
-    return footer;
+  return footer;
 }

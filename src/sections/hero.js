@@ -7,10 +7,24 @@ export function createHero() {
 
   const { orderMode } = getState();
 
+  // Select diverse food images for the strip
+  const stripImages = [
+    { src: '/images/foods/food-03.png', alt: 'Delicious Meal' },
+    { src: '/images/foods/food-07.png', alt: 'Special Dish' },
+    { src: '/images/foods/food-12.png', alt: 'Chef Special' },
+    { src: '/images/foods/food-16.png', alt: 'Popular Item' },
+    { src: '/images/foods/food-20.png', alt: 'Signature Platter' },
+    { src: '/images/foods/food-23.png', alt: 'Traditional Recipe' },
+  ];
+
   section.innerHTML = `
     <div class="hero-bg">
-      <div class="hero-bg-image"></div>
+      <div class="hero-bg-image" style="background-image:url('/images/foods/food-04.png')"></div>
       <div class="hero-overlay"></div>
+      <!-- Temple accent parallax layer -->
+      <div class="hero-temple-accent" data-parallax="0.05">
+        <img src="/From me/temple 01-Photoroom.png" alt="" class="hero-temple-img" />
+      </div>
     </div>
 
     <!-- MASSIVE BRAND NAME — edge to edge -->
@@ -53,40 +67,20 @@ export function createHero() {
       </div>
     </div>
 
-    <!-- REAL FOOD IMAGE STRIP — editorial gallery -->
+    <!-- REAL FOOD IMAGE STRIP — editorial gallery with real photos -->
     <div class="hero-food-strip">
       <div class="food-strip-track">
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/masala-dosa.png" alt="Masala Dosa" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/paneer-butter-masala.png" alt="Paneer Butter Masala" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/veg-manchurian.png" alt="Veg Manchurian" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/filter-coffee.png" alt="Filter Coffee" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/goli-baje.png" alt="Goli Baje" loading="lazy" />
-        </div>
+        ${stripImages.map(img => `
+          <div class="food-strip-item food-strip-img-card">
+            <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+          </div>
+        `).join('')}
         <!-- Duplicate for seamless infinite scroll -->
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/masala-dosa.png" alt="Masala Dosa" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/paneer-butter-masala.png" alt="Paneer Butter Masala" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/veg-manchurian.png" alt="Veg Manchurian" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/filter-coffee.png" alt="Filter Coffee" loading="lazy" />
-        </div>
-        <div class="food-strip-item food-strip-img-card">
-          <img src="/images/goli-baje.png" alt="Goli Baje" loading="lazy" />
-        </div>
+        ${stripImages.map(img => `
+          <div class="food-strip-item food-strip-img-card">
+            <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+          </div>
+        `).join('')}
       </div>
     </div>
 
