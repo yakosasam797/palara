@@ -1,18 +1,15 @@
 import './styles/base.css';
 import './styles/components.css';
 import { createNavbar } from './components/navbar.js';
-import { createCartDrawer } from './components/cart.js';
 import { createFooter } from './components/footer.js';
 import { createHero } from './sections/hero.js';
 import { createMenu } from './sections/menu.js';
-import { createCheckout } from './sections/checkout.js';
-import { createTracking } from './sections/tracking.js';
-import { createFavorites } from './sections/favorites.js';
+import { createSpecialties } from './sections/specialties.js';
+import { createOrderPlatforms } from './sections/order-platforms.js';
 import { createHeritage } from './sections/heritage.js';
-import { createCatering } from './sections/catering.js';
 import { createInstagram } from './sections/instagram.js';
-import { createDeliveryZone } from './sections/delivery-zone.js';
-import { subscribe, getState } from './data/store.js';
+import { createCatering } from './sections/catering.js';
+import { createOutlets } from './sections/outlets.js';
 import { icons } from './components/icons.js';
 
 const app = document.getElementById('app');
@@ -108,7 +105,7 @@ function initCounterAnimation() {
                         current = target;
                         clearInterval(timer);
                     }
-                    el.textContent = Math.floor(current);
+                    el.textContent = Math.floor(current).toLocaleString();
                 }, stepTime);
 
                 counterObserver.unobserve(el);
@@ -271,46 +268,37 @@ function initScrollProgress() {
    RENDER APP
    ============================================================ */
 function renderApp() {
-    const { currentView } = getState();
     app.innerHTML = '';
 
     // Navbar
     app.appendChild(createNavbar());
 
-    // Overlay for drawers
+    // Overlay for mobile drawer
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     overlay.addEventListener('click', () => {
-        document.getElementById('cart-drawer')?.classList.remove('active');
         document.getElementById('mobile-drawer')?.classList.remove('active');
         overlay.classList.remove('active');
         document.body.classList.remove('no-scroll');
     });
     app.appendChild(overlay);
 
-    // Cart drawer
-    app.appendChild(createCartDrawer());
-
     // Main content
     const main = document.createElement('main');
     main.className = 'main-content';
 
-    if (currentView === 'home') {
-        main.appendChild(createHero());
-        main.appendChild(createMenu());
-        main.appendChild(createTempleDivider());
-        main.appendChild(createFavorites());
-        main.appendChild(createTempleDivider());
-        main.appendChild(createInstagram());
-        main.appendChild(createTempleDivider());
-        main.appendChild(createHeritage());
-        main.appendChild(createCatering());
-        main.appendChild(createDeliveryZone());
-    } else if (currentView === 'checkout') {
-        main.appendChild(createCheckout());
-    } else if (currentView === 'tracking') {
-        main.appendChild(createTracking());
-    }
+    main.appendChild(createHero());
+    main.appendChild(createOrderPlatforms());
+    main.appendChild(createTempleDivider());
+    main.appendChild(createMenu());
+    main.appendChild(createTempleDivider());
+    main.appendChild(createSpecialties());
+    main.appendChild(createTempleDivider());
+    main.appendChild(createInstagram());
+    main.appendChild(createTempleDivider());
+    main.appendChild(createHeritage());
+    main.appendChild(createCatering());
+    main.appendChild(createOutlets());
 
     app.appendChild(main);
     app.appendChild(createFooter());
@@ -350,12 +338,3 @@ renderApp();
 
 // 3. Dismiss loader after animation plays
 dismissIntroLoader();
-
-// 4. Re-render on view changes
-let lastView = null;
-subscribe((state) => {
-    if (state.currentView !== lastView) {
-        lastView = state.currentView;
-        renderApp();
-    }
-});

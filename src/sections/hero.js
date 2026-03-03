@@ -1,11 +1,7 @@
-import { setOrderMode, getState } from '../data/store.js';
-
 export function createHero() {
   const section = document.createElement('section');
   section.className = 'hero';
   section.id = 'hero';
-
-  const { orderMode } = getState();
 
   // Select diverse food images for the strip
   const stripImages = [
@@ -52,18 +48,17 @@ export function createHero() {
         </p>
 
         <div class="hero-cta-row animate-fade-up" style="animation-delay:0.3s">
-          <div class="hero-mode-toggle">
-            <button class="mode-btn ${orderMode === 'delivery' ? 'active' : ''}" data-mode="delivery">
-              🚚 DELIVERY
-            </button>
-            <button class="mode-btn ${orderMode === 'pickup' ? 'active' : ''}" data-mode="pickup">
-              🏪 PICKUP
-            </button>
-          </div>
-          <a href="#menu" class="btn btn-primary btn-lg hero-order-btn">
-            ORDER NOW ↓
+          <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg hero-order-btn hero-zomato-btn">
+            <span class="platform-icon">🍽️</span> Order on Zomato
+          </a>
+          <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg hero-order-btn hero-swiggy-btn">
+            <span class="platform-icon">🛵</span> Order on Swiggy
           </a>
         </div>
+
+        <p class="hero-platform-note animate-fade-up" style="animation-delay:0.4s">
+          Available for delivery on Swiggy & Zomato
+        </p>
       </div>
     </div>
 
@@ -97,6 +92,8 @@ export function createHero() {
         <span class="marquee-divider">·</span>
         <span class="marquee-item">3 OUTLETS IN PUTTUR</span>
         <span class="marquee-divider">·</span>
+        <span class="marquee-item">AVAILABLE ON SWIGGY & ZOMATO</span>
+        <span class="marquee-divider">·</span>
         <span class="marquee-item">★ 4.5 RATED</span>
         <span class="marquee-divider">·</span>
         <span class="marquee-item">2,272+ REVIEWS</span>
@@ -107,17 +104,11 @@ export function createHero() {
         <span class="marquee-divider">·</span>
         <span class="marquee-item">3 OUTLETS IN PUTTUR</span>
         <span class="marquee-divider">·</span>
+        <span class="marquee-item">AVAILABLE ON SWIGGY & ZOMATO</span>
+        <span class="marquee-divider">·</span>
       </div>
     </div>
   `;
-
-  section.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      setOrderMode(btn.dataset.mode);
-      section.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
 
   return section;
 }

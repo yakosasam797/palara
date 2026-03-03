@@ -2,16 +2,16 @@ import { icons } from '../components/icons.js';
 import { showToast } from '../components/toast.js';
 
 export function createCatering() {
-    const section = document.createElement('section');
-    section.className = 'section catering-section';
-    section.id = 'catering';
-    section.style.background = 'var(--color-bg-warm)';
+  const section = document.createElement('section');
+  section.className = 'section catering-section';
+  section.id = 'catering';
+  section.style.background = 'var(--color-bg-warm)';
 
-    section.innerHTML = `
+  section.innerHTML = `
     <div class="container">
       <div class="section-header">
         <span class="section-eyebrow">Bulk Orders & Events</span>
-        <h2 class="section-title">Catering Services</h2>
+        <h2 class="section-title">Catering <span class="accent-serif">Services</span></h2>
         <p class="section-subtitle">Weddings, corporate events, birthdays — we cater pure vegetarian excellence for any occasion</p>
       </div>
 
@@ -100,10 +100,10 @@ export function createCatering() {
     </div>
   `;
 
-    section.querySelector('#catering-form')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        showToast('Inquiry submitted! We\'ll call you within 24 hours.', '✅');
-    });
+  section.querySelector('#catering-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('Inquiry submitted! We\'ll call you within 24 hours.', '✅');
+  });
 
-    return section;
+  return section;
 }

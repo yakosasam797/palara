@@ -4,7 +4,12 @@ import { outlets } from '../data/menu-data.js';
 export function createFooter() {
   const footer = document.createElement('footer');
   footer.className = 'footer';
+
+  // Faded temple illustration at the bottom of the footer
   footer.innerHTML = `
+    <div class="footer-temple-watermark">
+      <img src="/From me/temple 03-Photoroom (1).png" alt="" class="footer-temple-img" />
+    </div>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -33,11 +38,28 @@ export function createFooter() {
           <h4 class="footer-heading">Quick Links</h4>
           <ul class="footer-links">
             <li><a href="#menu">Menu</a></li>
-            <li><a href="#favorites">Favorites</a></li>
+            <li><a href="#specialties">Specialties</a></li>
+            <li><a href="#heritage">Heritage</a></li>
             <li><a href="#instagram">Instagram</a></li>
             <li><a href="#catering">Catering</a></li>
-            <li><a href="#locations">Delivery Zones</a></li>
+            <li><a href="#outlets">Outlets</a></li>
           </ul>
+        </div>
+
+        <div class="footer-order-col">
+          <h4 class="footer-heading">Order Online</h4>
+          <div class="footer-platform-links">
+            <a href="https://www.zomato.com" target="_blank" rel="noopener" class="footer-platform-link">
+              <span class="footer-platform-icon">🍽️</span>
+              <span>Order on Zomato</span>
+              ${icons.externalLink}
+            </a>
+            <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="footer-platform-link">
+              <span class="footer-platform-icon">🛵</span>
+              <span>Order on Swiggy</span>
+              ${icons.externalLink}
+            </a>
+          </div>
         </div>
       </div>
 

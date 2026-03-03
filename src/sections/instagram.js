@@ -22,7 +22,7 @@ export function createInstagram() {
       <div class="section-header reveal">
         <span class="section-eyebrow">@padivalspalara</span>
         <h2 class="section-title">Follow Us on <span class="accent-serif">Instagram</span></h2>
-        <p class="section-subtitle">See our food, get inspired, order instantly</p>
+        <p class="section-subtitle">See our food, get inspired, visit us or order online</p>
       </div>
 
       <div class="insta-grid stagger">
@@ -32,7 +32,6 @@ export function createInstagram() {
               <img src="${p.img}" alt="${p.caption}" loading="lazy" />
               <div class="insta-overlay">
                 <span class="insta-caption">${p.caption}</span>
-                <button class="btn btn-primary btn-sm">Order This</button>
               </div>
               <div class="insta-icon-badge">${icons.instagram}</div>
             </div>
