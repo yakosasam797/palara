@@ -50,12 +50,12 @@ export function createFooter() {
           <h4 class="footer-heading">Order Online</h4>
           <div class="footer-platform-links">
             <a href="https://www.zomato.com" target="_blank" rel="noopener" class="footer-platform-link">
-              <span class="footer-platform-icon">🍽️</span>
+              <span class="footer-platform-icon">🟥</span>
               <span>Order on Zomato</span>
               ${icons.externalLink}
             </a>
             <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="footer-platform-link">
-              <span class="footer-platform-icon">🛵</span>
+              <span class="footer-platform-icon">🟧</span>
               <span>Order on Swiggy</span>
               ${icons.externalLink}
             </a>

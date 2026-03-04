@@ -38,7 +38,7 @@
 }
 
 .navbar-logo-img {
-    height: 44px;
+    height: 60px;
     width: auto;
     transition: transform var(--duration-normal) var(--ease-spring);
 }
@@ -154,7 +154,7 @@
 }
 
 .mobile-logo-img {
-    height: 40px;
+    height: 52px;
     width: auto;
     filter: brightness(0) invert(1);
 }
@@ -382,36 +382,40 @@
     z-index: 0;
 }
 
-.hero-bg-image {
+/* Subtle gradient backdrop instead of food image */
+.hero-bg-gradient {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.18;
-    filter: blur(2px);
+    background: radial-gradient(ellipse at 50% 60%, rgba(var(--color-brand-rgb), 0.04) 0%, transparent 70%);
 }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, transparent 40%, var(--color-bg) 85%);
-}
-
-/* Temple illustration accent in hero */
-.hero-temple-accent {
+/* Dual temple silhouettes — cultural gateway framing */
+.hero-temple-left,
+.hero-temple-right {
     position: absolute;
     bottom: 0;
-    right: -5%;
-    width: 40%;
-    opacity: 0.06;
+    width: 35%;
+    max-width: 450px;
+    opacity: 0.07;
     pointer-events: none;
     z-index: 0;
+}
+
+.hero-temple-left {
+    left: -5%;
+    transform: scaleX(-1);
+}
+
+.hero-temple-right {
+    right: -5%;
 }
 
 .hero-temple-img {
     width: 100%;
     height: auto;
-    filter: sepia(0.4) saturate(0.5);
+    filter: sepia(0.4) saturate(0.5) brightness(0.9);
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 85%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 85%);
 }
 
 /* MASSIVE brand text â€” viewport-spanning */
@@ -622,16 +626,22 @@
 
 @media(max-width: 768px) {
     .hero-headline {
-        font-size: var(--fs-5xl);
+        font-size: var(--fs-4xl);
     }
 
     .hero-content {
         padding-top: var(--space-24);
+        padding-bottom: var(--space-6);
+    }
+
+    .hero-sub {
+        font-size: var(--fs-sm);
+        letter-spacing: var(--ls-wide);
     }
 
     .food-strip-item {
-        width: 150px;
-        height: 200px;
+        width: 140px;
+        height: 190px;
     }
 
     .food-strip-item span {
@@ -639,11 +649,43 @@
     }
 
     .marquee-item {
-        font-size: var(--fs-2xl);
+        font-size: var(--fs-xl);
     }
 
     .hero-cta-row {
         flex-direction: column;
+        width: 100%;
+        padding: 0 var(--space-4);
+    }
+
+    .hero-order-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: var(--fs-lg) !important;
+        padding: var(--space-4) var(--space-8) !important;
+    }
+
+    .hero-pill-badge {
+        font-size: var(--fs-xs);
+        padding: var(--space-1) var(--space-4);
+    }
+
+    .hero-temple-left,
+    .hero-temple-right {
+        width: 45%;
+        opacity: 0.05;
+    }
+
+    .hero-brand-text {
+        font-size: 18vw;
+    }
+
+    .hero-platform-note {
+        font-size: var(--fs-xs);
+    }
+
+    .navbar-logo-img {
+        height: 48px;
     }
 }
 
@@ -849,6 +891,7 @@
     margin-bottom: var(--space-5);
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -899,6 +942,24 @@
 
     .menu-card-emoji {
         font-size: 3.5rem;
+    }
+
+    /* Stack price + order buttons vertically on mobile */
+    .menu-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+
+    .menu-card-order-links {
+        width: 100%;
+    }
+
+    .menu-zomato-btn,
+    .menu-swiggy-btn {
+        flex: 1 !important;
+        justify-content: center !important;
+        padding: var(--space-3) var(--space-4) !important;
     }
 }
 
@@ -1408,20 +1469,27 @@
     align-items: flex-start;
 }
 
+.heritage-stat-value {
+    display: flex;
+    align-items: flex-start;
+    gap: 2px;
+    line-height: 1;
+}
+
 .heritage-stat-number {
     font-family: var(--font-display);
     font-size: var(--fs-5xl);
     color: var(--color-brand);
     line-height: 1;
-    display: inline;
 }
 
 .heritage-stat-suffix {
     font-family: var(--font-display);
-    font-size: var(--fs-3xl);
+    font-size: var(--fs-xl);
     color: var(--color-brand);
     line-height: 1;
-    display: inline;
+    font-weight: 700;
+    margin-top: 0.15em;
 }
 
 .heritage-stat-label {
@@ -1522,7 +1590,18 @@
     }
 
     .heritage-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: var(--space-6);
+    }
+
+    .heritage-stat {
+        align-items: center;
+        text-align: center;
+    }
+
+    .heritage-stat-value {
+        justify-content: center;
     }
 
     .heritage-stat-number {
@@ -2084,7 +2163,7 @@
 }
 
 .footer-logo-img {
-    height: 50px;
+    height: 65px;
     width: auto;
     filter: brightness(0) invert(1);
     opacity: 0.9;
@@ -2282,6 +2361,15 @@
 .platform-icon {
     font-size: 1.2em;
     margin-right: var(--space-2);
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.platform-icon svg {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
 }
 
 .hero-platform-note {
@@ -2394,14 +2482,43 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+}
+
+.platform-logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
 .platform-zomato-icon {
-    background: rgba(226, 55, 68, 0.1);
+    background: rgba(226, 55, 68, 0.08);
+}
+
+.platform-zomato-icon svg {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
 }
 
 .platform-swiggy-icon {
-    background: rgba(252, 128, 25, 0.1);
+    background: rgba(252, 128, 25, 0.08);
+}
+
+.platform-swiggy-icon svg {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+/* Hero button logo images */
+.platform-btn-logo {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border-radius: 4px;
+    vertical-align: middle;
 }
 
 .platform-name {
@@ -2535,12 +2652,19 @@
 
     .platforms-trust {
         flex-direction: column;
-        gap: var(--space-4);
+        gap: var(--space-5);
+        padding: var(--space-6);
+    }
+
+    .trust-item {
+        justify-content: center;
+        width: 100%;
     }
 
     .trust-divider {
         width: 40px;
         height: 2px;
+        margin: 0 auto;
     }
 }
 
@@ -2669,6 +2793,24 @@
     .specialty-img-wrap {
         height: 220px;
     }
+
+    .specialty-content {
+        padding: var(--space-6);
+    }
+
+    .specialty-order-row {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .specialty-order-link {
+        padding: var(--space-3) 0;
+    }
+
+    /* Heritage values — single column on small screens */
+    .heritage-values {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ==== HERITAGE — FADED TEMPLE WATERMARK APPROACH ==== */
@@ -2726,6 +2868,10 @@
 .heritage-content-centered .heritage-stat {
     align-items: center;
     text-align: center;
+}
+
+.heritage-content-centered .heritage-stat-value {
+    justify-content: center;
 }
 
 /* Heritage values grid */
@@ -3009,6 +3155,15 @@
 
 .footer-platform-icon {
     font-size: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-platform-logo-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .footer-platform-link svg {
@@ -3033,10 +3188,10 @@
 .footer-temple-img {
     width: 100%;
     height: auto;
-    opacity: 0.03;
+    opacity: 0.05;
     filter: brightness(0) invert(1) sepia(0.2);
-    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
-    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 60%);
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 70%);
 }
 
 .footer {
@@ -3052,5 +3207,226 @@
 @media(max-width: 768px) {
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+
+    .footer-logo-img {
+        height: 55px;
+    }
+
+    .footer-platform-link {
+        padding: var(--space-3) var(--space-4);
+        font-size: var(--fs-xs);
+    }
+
+    .footer-platform-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .footer-heading {
+        margin-bottom: var(--space-5);
+    }
+}
+
+/* ============================================================
+   COMPREHENSIVE MOBILE-FIRST POLISH
+   ============================================================ */
+
+/* SVG icons inside buttons — consistent sizing everywhere */
+.btn svg,
+.mobile-platform-btn svg,
+.outlets-order-buttons svg,
+.hero-order-btn svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.mobile-platform-btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+.mobile-platform-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.outlets-order-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* footer platform icon SVG sizing */
+.footer-platform-icon svg {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+/* Specialty order links — SVG icon alignment */
+.specialty-order-link {
+    display: inline-flex;
+    align-items: center;
+}
+
+@media(max-width: 768px) {
+
+    /* Section spacing consistency */
+    .section {
+        padding: var(--space-16) 0;
+    }
+
+    .section-header {
+        margin-bottom: var(--space-8);
+    }
+
+    .section-title {
+        font-size: var(--fs-3xl);
+    }
+
+    .section-subtitle {
+        font-size: var(--fs-sm);
+    }
+
+    /* Catering — form improvements */
+    .catering-feature {
+        gap: var(--space-3);
+        padding: var(--space-4) 0;
+    }
+
+    .catering-feature-icon {
+        font-size: 1.6rem;
+    }
+
+    .catering-form .card-body {
+        padding: var(--space-5) var(--space-5);
+    }
+
+    .catering-form .card-body h3 {
+        font-size: var(--fs-xl);
+    }
+
+    /* Heritage stats — clean 2×2 grid on small screens */
+    .heritage-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-5);
+        justify-content: center;
+    }
+
+    .heritage-stat {
+        align-items: center;
+        text-align: center;
+        padding: var(--space-4);
+        background: rgba(var(--color-brand-rgb), 0.03);
+        border-radius: var(--radius-xl);
+    }
+
+    .heritage-stat-value {
+        justify-content: center;
+    }
+
+    .heritage-stat-number {
+        font-size: var(--fs-3xl);
+    }
+
+    .heritage-stat-suffix {
+        font-size: var(--fs-base);
+    }
+
+    .heritage-badges {
+        justify-content: center;
+    }
+
+    /* Outlets — button stacking */
+    .outlet-actions {
+        flex-direction: column;
+    }
+
+    .outlet-action-btn {
+        width: 100%;
+    }
+
+    .outlets-order-inner {
+        gap: var(--space-5);
+    }
+
+    .outlets-order-text h3 {
+        font-size: var(--fs-xl);
+    }
+
+    /* Order platforms — card padding */
+    .platform-card-inner {
+        padding: var(--space-6);
+    }
+
+    .platform-name {
+        font-size: var(--fs-2xl);
+    }
+
+    .platform-icon-circle {
+        width: 52px;
+        height: 52px;
+    }
+
+    .platform-icon-circle svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Trust bar compact */
+    .trust-text {
+        font-size: var(--fs-xs);
+    }
+
+    /* Instagram grid — 2-col on mobile */
+    .insta-card:nth-child(odd),
+    .insta-card:nth-child(even) {
+        transform: none;
+    }
+
+    /* General spacing */
+    .container {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+    }
+}
+
+/* Extra small screens (360px and below) */
+@media(max-width: 400px) {
+    .hero-headline {
+        font-size: var(--fs-3xl);
+    }
+
+    .hero-pill-badge {
+        font-size: 10px;
+        padding: 2px var(--space-3);
+    }
+
+    .hero-brand-text {
+        font-size: 22vw;
+    }
+
+    .platform-name {
+        font-size: var(--fs-xl);
+    }
+
+    .section-title {
+        font-size: var(--fs-2xl);
+    }
+
+    .heritage-title {
+        font-size: var(--fs-3xl);
+    }
+
+    .mobile-link {
+        font-size: var(--fs-3xl);
+        padding: var(--space-4) 0;
     }
 }

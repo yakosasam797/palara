@@ -27,23 +27,30 @@ export function createHeritage() {
 
         <div class="heritage-stats reveal" style="transition-delay:0.2s">
           <div class="heritage-stat">
-            <span class="heritage-stat-number counter-animate" data-count="5">0</span>
-            <span class="heritage-stat-suffix">+</span>
+            <div class="heritage-stat-value">
+              <span class="heritage-stat-number counter-animate" data-count="5">0</span>
+              <span class="heritage-stat-suffix">+</span>
+            </div>
             <span class="heritage-stat-label">Years of Service</span>
           </div>
           <div class="heritage-stat">
-            <span class="heritage-stat-number counter-animate" data-count="3">0</span>
-            <span class="heritage-stat-suffix"></span>
+            <div class="heritage-stat-value">
+              <span class="heritage-stat-number counter-animate" data-count="3">0</span>
+            </div>
             <span class="heritage-stat-label">Outlets in Puttur</span>
           </div>
           <div class="heritage-stat">
-            <span class="heritage-stat-number">100</span>
-            <span class="heritage-stat-suffix">%</span>
+            <div class="heritage-stat-value">
+              <span class="heritage-stat-number">100</span>
+              <span class="heritage-stat-suffix">%</span>
+            </div>
             <span class="heritage-stat-label">Pure Vegetarian</span>
           </div>
           <div class="heritage-stat">
-            <span class="heritage-stat-number counter-animate" data-count="2272">0</span>
-            <span class="heritage-stat-suffix">+</span>
+            <div class="heritage-stat-value">
+              <span class="heritage-stat-number counter-animate" data-count="2272">0</span>
+              <span class="heritage-stat-suffix">+</span>
+            </div>
             <span class="heritage-stat-label">Happy Reviews</span>
           </div>
         </div>

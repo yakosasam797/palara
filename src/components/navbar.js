@@ -48,10 +48,10 @@ export function createNavbar() {
           <p class="mobile-drawer-label">Order Online</p>
           <div class="mobile-order-platforms">
             <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg mobile-platform-btn">
-              🍽️ Zomato
+              Zomato
             </a>
             <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg mobile-platform-btn">
-              🛵 Swiggy
+              Swiggy
             </a>
           </div>
         </div>

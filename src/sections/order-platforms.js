@@ -1,11 +1,19 @@
 import { icons } from '../components/icons.js';
 
-export function createOrderPlatforms() {
-    const section = document.createElement('section');
-    section.className = 'section order-platforms-section';
-    section.id = 'order-online';
+// Real platform logos from public/From me/
+const platformLogos = {
+  zomatoIcon: '/From me/zomato icon mark.png',
+  swiggyIcon: '/From me/swiggy icon mark.png',
+  zomatoFull: '/From me/zomato full logo.png',
+  swiggyFull: '/From me/Swiggy full logo.png',
+};
 
-    section.innerHTML = `
+export function createOrderPlatforms() {
+  const section = document.createElement('section');
+  section.className = 'section order-platforms-section';
+  section.id = 'order-online';
+
+  section.innerHTML = `
     <div class="container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Order Online</span>
@@ -19,7 +27,7 @@ export function createOrderPlatforms() {
           <div class="platform-card-inner">
             <div class="platform-logo-area">
               <div class="platform-icon-circle platform-zomato-icon">
-                <span style="font-size:2rem">🍽️</span>
+                <img src="${platformLogos.zomatoIcon}" alt="Zomato" class="platform-logo-img" />
               </div>
               <h3 class="platform-name">Zomato</h3>
             </div>
@@ -43,7 +51,7 @@ export function createOrderPlatforms() {
           <div class="platform-card-inner">
             <div class="platform-logo-area">
               <div class="platform-icon-circle platform-swiggy-icon">
-                <span style="font-size:2rem">🛵</span>
+                <img src="${platformLogos.swiggyIcon}" alt="Swiggy" class="platform-logo-img" />
               </div>
               <h3 class="platform-name">Swiggy</h3>
             </div>
@@ -82,5 +90,5 @@ export function createOrderPlatforms() {
     </div>
   `;
 
-    return section;
+  return section;
 }

@@ -95,10 +95,10 @@ export function createMenu() {
                   <span class="menu-card-price">₹${item.price}</span>
                   <div class="menu-card-order-links">
                     <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-sm menu-zomato-btn" title="Order on Zomato">
-                      🍽️ Zomato
+                      Zomato
                     </a>
                     <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="btn btn-sm menu-swiggy-btn" title="Order on Swiggy">
-                      🛵 Swiggy
+                      Swiggy
                     </a>
                   </div>
                 </div>

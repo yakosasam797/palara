@@ -2,11 +2,11 @@ import { icons } from '../components/icons.js';
 import { outlets } from '../data/menu-data.js';
 
 export function createOutlets() {
-    const section = document.createElement('section');
-    section.className = 'section outlets-section';
-    section.id = 'outlets';
+  const section = document.createElement('section');
+  section.className = 'section outlets-section';
+  section.id = 'outlets';
 
-    section.innerHTML = `
+  section.innerHTML = `
     <div class="container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Visit Us</span>
@@ -60,10 +60,10 @@ export function createOutlets() {
           </div>
           <div class="outlets-order-buttons">
             <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-              🍽️ Zomato
+              Zomato
             </a>
             <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
-              🛵 Swiggy
+              Swiggy
             </a>
           </div>
         </div>
@@ -71,5 +71,5 @@ export function createOutlets() {
     </div>
   `;
 
-    return section;
+  return section;
 }

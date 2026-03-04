@@ -1,3 +1,5 @@
+import { icons } from '../components/icons.js';
+
 export function createHero() {
   const section = document.createElement('section');
   section.className = 'hero';
@@ -15,10 +17,12 @@ export function createHero() {
 
   section.innerHTML = `
     <div class="hero-bg">
-      <div class="hero-bg-image" style="background-image:url('/images/foods/food-04.png')"></div>
-      <div class="hero-overlay"></div>
-      <!-- Temple accent parallax layer -->
-      <div class="hero-temple-accent" data-parallax="0.05">
+      <div class="hero-bg-gradient"></div>
+      <!-- Dual temple silhouettes — cultural gateway framing -->
+      <div class="hero-temple-left" data-parallax="0.04">
+        <img src="/From me/temple 02-Photoroom.png" alt="" class="hero-temple-img" />
+      </div>
+      <div class="hero-temple-right" data-parallax="0.04">
         <img src="/From me/temple 01-Photoroom.png" alt="" class="hero-temple-img" />
       </div>
     </div>
@@ -49,10 +53,10 @@ export function createHero() {
 
         <div class="hero-cta-row animate-fade-up" style="animation-delay:0.3s">
           <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg hero-order-btn hero-zomato-btn">
-            <span class="platform-icon">🍽️</span> Order on Zomato
+            Order on Zomato
           </a>
           <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg hero-order-btn hero-swiggy-btn">
-            <span class="platform-icon">🛵</span> Order on Swiggy
+            Order on Swiggy
           </a>
         </div>
 
